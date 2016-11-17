@@ -24,7 +24,14 @@ public protocol DrawableContainerChild {}
          this protocol in order to use it for meaningful purpose. For instance, the signatures
          are heavily bound to UIView instances, which defeats the entire purpose of this protocol.
 */
-public protocol DrawableContainer {
+public protocol DrawableContainer : class {
+  
+  var frame: CGRect { get set }
+  var alpha: CGFloat { get set }
+  var tag: Int { get set }
+  
+  static func make() -> Self
+  
   /**
     Removes all the children from the container
 
@@ -40,7 +47,7 @@ public protocol DrawableContainer {
    
    - warning: this method should be invoked in the main queue
   */
-  @discardableResult func addChild(_ child: () -> UIView) -> DrawableContainer
+  @discardableResult func addChild(_ child: () -> DrawableContainer) -> DrawableContainer
   
   /**
    Updates the description
@@ -50,7 +57,7 @@ public protocol DrawableContainer {
    
    - warning: this method should be invoked in the main queue
   */
-  func update(with updateView: (UIView)->())
+  func update(with updateView: (DrawableContainer)->())
   
   /// Returns the children of the container
   func children () -> [DrawableContainerChild]
@@ -74,6 +81,11 @@ internal let VIEWTAG = 999987
 
 /// An extension of UIView that implements the `DrawableContainer` protocol
 extension UIView: DrawableContainer {
+  
+  public static func make() -> Self {
+    return self.init()
+  }
+
   /// A struct that implements the `DrawableContainerChild` protocol
   public struct UIViewDrawableContainerChild: DrawableContainerChild {
     /// the child view
@@ -103,7 +115,7 @@ extension UIView: DrawableContainer {
    
    - seeAlso: `DrawableContainer`
   */
-  public func addChild(_ child: () -> UIView) -> DrawableContainer {
+  public func addChild(_ child: () -> DrawableContainer) -> DrawableContainer {
     if #available(iOS 10.0, *) {
       dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
       
@@ -113,7 +125,9 @@ extension UIView: DrawableContainer {
     
     let child = child()
     child.tag = VIEWTAG
-    self.addSubview(child)
+    if let viewChild = child as? UIView {
+      self.addSubview(viewChild)
+    }
     return child
   }
   
@@ -122,7 +136,7 @@ extension UIView: DrawableContainer {
    
    - seeAlso: `DrawableContainer`
   */
-  public func update(with updateView: (UIView)->()) {
+  public func update(with updateView: (DrawableContainer)->()) {
     if #available(iOS 10.0, *) {
       dispatchPrecondition(condition: .onQueue(DispatchQueue.main))
       

@@ -169,14 +169,13 @@ extension Node {
       fatalError("draw can only be call once on a node")
     }
     
-    self.container = container.addChild() { Description.NativeView() }
+    self.container = container.addChild() { Description.NativeView.make() }
     
     let update = { [weak self] (state: Description.StateType) in
       DispatchQueue.main.async {
         self?.update(for: state)
       }
     }
-    
     self.container?.update { view in
       Description.applyPropsToNativeView(props: self.description.props,
                                          state: self.state,

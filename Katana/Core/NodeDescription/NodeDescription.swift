@@ -156,10 +156,11 @@ public enum EmptyKeys {}
  These instances are used by Katana to understand how to update the UI (update, remove and add views) and then thrown away.
  
 */
+
 public protocol NodeDescription: AnyNodeDescription {
   
   /// The UIKit class that will be instantiated for this description. The default value is `UIView`
-  associatedtype NativeView: UIView = UIView
+  associatedtype NativeView: DrawableContainer = UIView
   
   /// The type of properties that this description uses. The default value is `EmptyProps`
   associatedtype PropsType: NodeDescriptionProps = EmptyProps
