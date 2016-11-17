@@ -49,6 +49,8 @@ public protocol DrawableContainer : class {
   */
   @discardableResult func addChild(_ child: () -> DrawableContainer) -> DrawableContainer
   
+  func addToParent(parent: DrawableContainer)
+  
   /**
    Updates the description
    
@@ -123,12 +125,18 @@ extension UIView: DrawableContainer {
       assert(Thread.isMainThread)
     }
     
+    
     let child = child()
     child.tag = VIEWTAG
-    if let viewChild = child as? UIView {
-      self.addSubview(viewChild)
-    }
+    
+    child.addToParent(parent: self)
     return child
+  }
+  
+  public func addToParent(parent: DrawableContainer) {
+    if let parent = parent as? UIView {
+      parent.addSubview(self)
+    }
   }
   
   /**

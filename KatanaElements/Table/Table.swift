@@ -11,10 +11,12 @@ import UIKit
 import Katana
 
 public extension Table {
-  public struct Props: NodeDescriptionProps, Buildable {
+  public struct Props: NodeDescriptionProps, Childrenable, Buildable {
     public var frame = CGRect.zero
     public var key: String?
     public var alpha: CGFloat = 1.0
+    
+    public var children: [AnyNodeDescription] = []
     
     public var delegate: TableDelegate = EmptyTableDelegate()
     public var backgroundColor = UIColor.white
@@ -40,14 +42,9 @@ public extension Table {
   }
 }
 
-public struct Table: NodeDescription {
-  public typealias NativeView = NativeTable
+public struct Table: NodeDescription, NodeDescriptionWithChildren {
   
   public var props: Props
-  
-  public init(props: Props) {
-    self.props = props
-  }
   
   public static func applyPropsToNativeView(props: Props,
                                             state: EmptyState,
@@ -57,12 +54,12 @@ public struct Table: NodeDescription {
     
     view.frame = props.frame
     view.alpha = props.alpha
-    view.backgroundColor = props.backgroundColor
+    /*view.backgroundColor = props.backgroundColor
     view.layer.cornerRadius = props.cornerRadius
     view.layer.borderWidth = props.borderWidth
     view.layer.borderColor = props.borderColor.cgColor
     view.clipsToBounds = props.clipsToBounds
-    view.update(withparent: node, delegate: props.delegate)
+    view.update(withparent: node, delegate: props.delegate)*/
   }
   
   
@@ -70,6 +67,15 @@ public struct Table: NodeDescription {
                             state: EmptyState,
                             update: @escaping (EmptyState)->(),
                             dispatch: @escaping StoreDispatch) -> [AnyNodeDescription] {
-    return []
+    return props.children
+  }
+  
+  public init(props: Props) {
+    self.props = props
+  }
+  
+  public init(props: Props, _ children: () -> [AnyNodeDescription]) {
+    self.props = props
+    self.props.children = children()
   }
 }
