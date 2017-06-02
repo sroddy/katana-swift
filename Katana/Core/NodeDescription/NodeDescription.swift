@@ -6,7 +6,6 @@
 //  Distributed under the MIT License.
 //  See the LICENSE file for more information.
 
-import CoreGraphics
 /**
  Protocol that is used for structs that represent the state of a `Node`.
  

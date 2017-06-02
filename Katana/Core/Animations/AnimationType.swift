@@ -7,8 +7,6 @@
 //  See the LICENSE file for more information.
 
 import Foundation
-import CoreGraphics
-//import UIKit
 
 /**
   A set of options that can be used to personalise the animations

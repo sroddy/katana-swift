@@ -6,8 +6,6 @@
 //  Distributed under the MIT License.
 //  See the LICENSE file for more information.
 
-import CoreGraphics
-
 /// The default props for a `NodeDescription`. Besides `frame` and `key`, this struct doesn't have any other property
 public struct EmptyProps: NodeDescriptionProps {
   /// The alpha of the description

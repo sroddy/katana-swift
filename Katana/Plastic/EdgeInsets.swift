@@ -6,8 +6,6 @@
 //  Distributed under the MIT License.
 //  See the LICENSE file for more information.
 
-import CoreGraphics
-
 /// `EdgeInsets` is the scalable counterpart of `UIEdgeInsets`
 public struct EdgeInsets: Equatable {
 

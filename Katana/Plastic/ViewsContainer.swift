@@ -6,8 +6,6 @@
 //  Distributed under the MIT License.
 //  See the LICENSE file for more information.
 
-import CoreGraphics
-
 /// Internal key used to store and retrieve the native view
 private let nativeViewKey = "//NATIVEVIEWKEY\\"
 

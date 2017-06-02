@@ -6,7 +6,6 @@
 //  Distributed under the MIT License.
 //  See the LICENSE file for more information.
 
-import CoreGraphics
 /**
  Protocol that `NodeDescription` implementations can adopt to provide a reference size.
  

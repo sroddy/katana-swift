@@ -6,8 +6,6 @@
 //  Distributed under the MIT License.
 //  See the LICENSE file for more information.
 
-import CoreGraphics
-
 /// Enum that represents a constraint in the X axis
 private enum ConstraintX {
   case none, left, right, centerX, width

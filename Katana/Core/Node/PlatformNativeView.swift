@@ -6,8 +6,6 @@
 //  Distributed under the MIT License.
 //  See the LICENSE file for more information.
 
-import CoreGraphics
-
 /**
  This protocol abstracts how `Node` instances can be rendered. We have introduced this protocol
  to abstract the Katana world (nodes and descriptions) from the underlying implementation of how

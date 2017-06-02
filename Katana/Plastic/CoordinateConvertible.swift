@@ -6,8 +6,6 @@
 //  Distributed under the MIT License.
 //  See the LICENSE file for more information.
 
-import CoreGraphics
-
 /**
  Protocol used to emulate the hierarchy methods that UIKit/AppKit offers.
  Whoever implements this method should act as UIKit/AppKit and provide conversion
