@@ -15,7 +15,7 @@ public struct EmptyProps: NodeDescriptionProps {
   public var key: String?
 
   /// The frame of the description
-  public var frame: CGRect = CGRect.zero
+  public var frame: CGRect = CGRect()
 
   /**
    Implementation of the `Equatable` protocol

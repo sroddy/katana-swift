@@ -9,16 +9,20 @@
 internal let VIEWTAG = 999987
 
 /// An extension of
-class AndroidView: PlatformNativeView {
+public class AndroidView: PlatformNativeView {
+	
   /// The frame of the native view
-  public var frame: CGRect
+  public var frame: CGRect = CGRect()
 
   /// The alpha of the native view
-  public var alpha: CGFloat
+  public var alpha: CGFloat = 1
 
   /// An unique tag value related to the native view
-  public var tagValue: Int
+  public var tagValue: Int = VIEWTAG
 
+  required public init() {
+  }
+  
   /**
    Creates a new instance of the platform native view
 
@@ -45,7 +49,8 @@ class AndroidView: PlatformNativeView {
 
    - warning: this method should be invoked in the main queue
    */
-  @discardableResult func addChild(_ child: () -> PlatformNativeView) -> PlatformNativeView {
+  @discardableResult
+  public func addChild(_ child: () -> PlatformNativeView) -> PlatformNativeView {
     let child = child()
     child.tagValue = VIEWTAG
 
@@ -104,7 +109,7 @@ class AndroidView: PlatformNativeView {
    - parameter block: a block that contains the updates to the UI to animate
    - parameter completion: a block that is called when the animation completes
    */
-  static func animate(type: AnimationType, _ block: @escaping ()->(), completion: (() -> ())?) {
+  public static func animate(type: AnimationType, _ block: @escaping ()->(), completion: (() -> ())?) {
     block()
     completion?()
   }

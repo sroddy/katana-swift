@@ -20,9 +20,8 @@ public struct CGRect: Equatable {
   // MARK: - Initialization
 
   public init(origin: CGPoint = CGPoint(), size: CGSize = CGSize()) {
-
     self.origin = origin
-    self.size = CGSize
+    self.size = size
   }
 
   public init(x: Double, y: Double, width: Double, height: Double) {
@@ -30,6 +29,8 @@ public struct CGRect: Equatable {
     self.origin = CGPoint(x: x, y: y)
     self.size = CGSize(width: width, height: height)
   }
+  
+  static let zero: CGRect = CGRect()
 
   // MARK: - Accessors
 
@@ -102,7 +103,7 @@ public struct CGRect: Equatable {
 
 // MARK: - Equatable
 
-public func == (lhs: Rect, rhs: Rect) -> Bool {
+public func == (lhs: CGRect, rhs: CGRect) -> Bool {
 
   return lhs.origin == rhs.origin && lhs.size == rhs.size
 }
