@@ -6,6 +6,8 @@
 //  Distributed under the MIT License.
 //  See the LICENSE file for more information.
 
+import AppKit
+
 open class NSViewCustom: NSView {
 
   // In Katana macOS we stick with the iOS coordinate system
