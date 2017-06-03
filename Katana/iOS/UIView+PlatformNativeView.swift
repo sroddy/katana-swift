@@ -6,6 +6,8 @@
 //  Distributed under the MIT License.
 //  See the LICENSE file for more information.
 
+import UIKit
+
 internal let VIEWTAG = 999987
 
 /// An extension of UIView that implements the `DrawableContainer` protocol

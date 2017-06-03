@@ -6,6 +6,8 @@
 //  Distributed under the MIT License.
 //  See the LICENSE file for more information.
 
+import UIKit
+
 public typealias DefaultView = UIView
 public typealias FloatEdgeInsets = UIEdgeInsets
 public typealias Screen = UIScreen
