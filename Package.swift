@@ -2,12 +2,12 @@ import PackageDescription
 
 var exclude: Set<String> = ["Android", "iOS", "MacOS"]
 
-#if os(Android)
-  exclude = exclude - ["Android"]
+#if os(Linux)
+  exclude.remove("Android")
 #elseif os(iOS)
-  exclude = exclude - ["iOS"]
+  exclude.remove("iOS")
 #else
-  exclude = exclude - ["macOS"]
+  exclude.remove("macOS")
 #endif
 
 let package = Package(
