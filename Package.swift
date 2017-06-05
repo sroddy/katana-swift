@@ -13,5 +13,5 @@ var exclude: Set<String> = ["Android", "iOS", "MacOS"]
 let package = Package(
     name: "Katana",
     dependencies: [],
-    exclude: exclude
+    exclude: Array<String>(exclude)
 )
