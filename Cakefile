@@ -12,11 +12,11 @@ katana_ios = target do |target|
     target.language = :swift
     target.type = :framework
     target.include_files = [
-        "Katana/Core/**/*.swift",
-        "Katana/Extensions/**/*.swift",
-        "Katana/iOS/**/*.swift",
-        "Katana/Plastic/**/*.swift",
-        "Katana/Store/**/*.swift"
+        "Source/Core/**/*.swift",
+        "Source/Extensions/**/*.swift",
+        "Source/iOS/**/*.swift",
+        "Source/Plastic/**/*.swift",
+        "Source/Store/**/*.swift"
     ]
 
     target.all_configurations.each do |configuration|
@@ -106,11 +106,11 @@ katana_macos = target do |target|
     target.language = :swift
     target.type = :framework
     target.include_files = [
-        "Katana/Core/**/*.swift",
-        "Katana/Extensions/**/*.swift",
-        "Katana/MacOS/**/*.swift",
-        "Katana/Plastic/**/*.swift",
-        "Katana/Store/**/*.swift"
+        "Source/Core/**/*.swift",
+        "Source/Extensions/**/*.swift",
+        "Source/MacOS/**/*.swift",
+        "Source/Plastic/**/*.swift",
+        "Source/Store/**/*.swift"
     ]
 
     target.all_configurations.each do |configuration|

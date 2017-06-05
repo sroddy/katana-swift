@@ -27,9 +27,9 @@ We feel that Katana helped us a lot since we started using it in production. At 
   s.ios.deployment_target = '8.3'
   s.osx.deployment_target = '10.10'
   
-  s.source_files = ['Katana/**/*.{swift,h}']
+  s.source_files = ['Source/**/*.{swift,h}']
   
-  s.ios.exclude_files = 'Katana/macOS/**/*'
-  s.osx.exclude_files = 'Katana/iOS/**/*'
+  s.ios.exclude_files = ['Source/macOS/**/*', 'Source/Android/**/*']
+  s.osx.exclude_files = ['Source/iOS/**/*', , 'Source/Android/**/*']
   
 end
